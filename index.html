@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Winny Ouma • Portfolio</title>
+  <meta name="description" content="Portfolio of Winny Ouma – climate justice advocate, Human Rights Defender, and web learner. Projects, experience, and contact." />
+  <meta property="og:title" content="Winny Ouma • Portfolio" />
+  <meta property="og:description" content="Climate justice, feminist leadership, and tech for good – explore Winny’s work and projects." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://placehold.co/1200x630/png" />
+  <meta name="color-scheme" content="light dark" />
+
+  <!-- ====== CSS (inline for single-file demo). To use an external file,
+       copy everything inside <style> into styles.css and replace this block
+       with: <link rel="stylesheet" href="styles.css"> -->
+  <style>
+    /* --- CSS Reset (minimal) --- */
+    *, *::before, *::after { box-sizing: border-box; }
+    * { margin: 0; }
+    html:focus-within { scroll-behavior: smooth; }
+    body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+    img, picture, video, canvas, svg { display: block; max-width: 100%; }
+    input, button, textarea, select { font: inherit; }
+    :root { color-scheme: light dark; }
+
+    /* --- Theme --- */
+    :root {
+      --bg: #0b0b0c;
+      --card: #121216;
+      --text: #eaeaf0;
+      --muted: #b5b7c3;
+      --brand: #4ade80; /* green */
+      --brand-2: #38bdf8; /* blue */
+      --ring: 0 0 0 .15rem color-mix(in oklab, var(--brand), white 25%);
+      --radius: 16px;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f7f7fb;
+        --card: #ffffff;
+        --text: #0f1222;
+        --muted: #48506b;
+        --shadow: 0 10px 30px rgba(12,20,45,.08);
+      }
+    }
+
+    /* --- Base --- */
+    body {
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
+                   Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: radial-gradient(1200px 600px at 80% -10%, color-mix(in oklab, var(--brand-2), transparent 85%), transparent 70%),
+                  radial-gradient(1000px 500px at -10% 10%, color-mix(in oklab, var(--brand), transparent 85%), transparent 70%),
+                  var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container { width: min(1100px, 92%); margin-inline: auto; }
+
+    /* --- Header --- */
+    header {
+      position: sticky; top: 0; backdrop-filter: saturate(1.2) blur(8px);
+      background: color-mix(in oklab, var(--bg), transparent 35%);
+      border-bottom: 1px solid color-mix(in oklab, var(--muted), transparent 70%);
+      z-index: 10;
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: 1rem 0; }
+    .brand { font-weight: 800; letter-spacing: .2px; display: inline-flex; gap: .6rem; align-items: center; }
+    .brand-badge { width: 10px; height: 10px; border-radius: 999px; background: linear-gradient(45deg, var(--brand), var(--brand-2)); box-shadow: 0 0 0 4px color-mix(in oklab, var(--brand), transparent 80%); }
+    nav ul { display: flex; gap: 1rem; list-style: none; }
+    nav a { padding: .55rem .8rem; border-radius: 999px; }
+    nav a:hover { background: color-mix(in oklab, var(--card), transparent 60%); text-decoration: none; }
+
+    /* --- Hero --- */
+    .hero { padding: 5rem 0 3rem; display: grid; gap: 1.5rem; align-items: center; }
+    .hero h1 { font-size: clamp(2rem, 4vw + 1rem, 3.25rem); line-height: 1.1; }
+    .hero p { max-width: 65ch; color: var(--muted); }
+    .hero-cta { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: .7rem; }
+    .btn { display: inline-flex; align-items: center; gap: .5rem; padding: .75rem 1rem; border-radius: 999px; border: 1px solid transparent; background: var(--card); box-shadow: var(--shadow); }
+    .btn:hover { transform: translateY(-1px); text-decoration: none; }
+    .btn.primary { background: linear-gradient(90deg, var(--brand), var(--brand-2)); color: #0a0a0a; font-weight: 700; }
+
+    /* --- Sections --- */
+    section { padding: 3.5rem 0; }
+    .section-title { font-size: clamp(1.25rem, 1.6vw + .8rem, 1.75rem); margin-bottom: 1.2rem; }
+
+    /* --- Cards & Grids --- */
+    .grid { display: grid; gap: 1rem; }
+    @media (min-width: 700px) { .grid.cols-3 { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 699px) { .grid.cols-3 { grid-template-columns: 1fr; } }
+
+    .card { background: var(--card); border: 1px solid color-mix(in oklab, var(--muted), transparent 80%); border-radius: var(--radius); padding: 1.1rem; box-shadow: var(--shadow); transition: transform .2s ease; }
+    .card:hover { transform: translateY(-3px); }
+    .card h3 { font-size: 1.05rem; margin-bottom: .25rem; }
+    .card p { color: var(--muted); font-size: .98rem; }
+    .pill { display: inline-block; font-size: .75rem; padding: .25rem .6rem; border-radius: 999px; border: 1px solid color-mix(in oklab, var(--muted), transparent 65%); margin-right: .35rem; margin-top: .35rem; }
+
+    /* --- About --- */
+    .about { display: grid; gap: 1.2rem; align-items: center; }
+    @media (min-width: 900px) { .about { grid-template-columns: 1.2fr .8fr; } }
+    .about .photo { aspect-ratio: 1; border-radius: var(--radius); overflow: hidden; border: 1px solid color-mix(in oklab, var(--muted), transparent 75%); box-shadow: var(--shadow); }
+    .about img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* --- Footer --- */
+    footer { padding: 2.5rem 0; color: var(--muted); border-top: 1px solid color-mix(in oklab, var(--muted), transparent 75%); margin-top: 2rem; }
+
+    /* --- Utilities --- */
+    .muted { color: var(--muted); }
+    .row { display: flex; gap: .6rem; flex-wrap: wrap; }
+
+    /* --- Accessibility --- */
+    :focus-visible { outline: none; box-shadow: var(--ring); border-radius: .5rem; }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav" role="navigation" aria-label="Main">
+      <a class="brand" href="#home" aria-label="Go to top">
+        <span class="brand-badge" aria-hidden="true"></span>
+        <span>Winny Ouma</span>
+      </a>
+      <nav>
+        <ul>
+          <li><a href="#projects">Engagements</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="home" class="container">
+    <!-- Hero -->
+    <section class="hero" aria-labelledby="intro-title">
+      <h1 id="intro-title">Climate Justice Advocate • Human Rights Defender • Web Developer</h1>
+      <p>
+        I’m <strong>Winny Ouma</strong>, a Kenyan feminist climate justice organizer and the founding director of
+        <em>ICA Foundation Kenya</em>. I build inclusive, community-centered solutions and love using tech to co-create climate solutions.
+      </p>
+      <div class="hero-cta">
+        <a class="btn primary" href="#contact">Contact me</a>
+        <a class="btn" href="#projects">See Engagements</a>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" aria-labelledby="projects-title">
+      <h2 class="section-title" id="projects-title">Featured Engagements</h2>
+      <div class="grid cols-3">
+        <article class="card">
+          <h3>Moderating a High-Level Session at the Resilience Hub During COP 29 in Baku, Azerbaijan.</h3>
+          <img src="images/COP 29.jpeg" alt="Image"/>
+          <div class="row">
+            <span class="pill">Anticipatory Humanitarian Action</span><span class="pill">Storytelling</span><span class="pill">Policy</span>
+          </div>
+        </article>
+        <article class="card">
+          <h3>Participating in the Africa Climate Reality Project Corp Leadership Training in Cape Town, South Africa</h3>
+          <img src="images/SA.jpeg" alt="image" />
+          <div class="row">
+            <span class="pill">Climate Action</span><span class="pill">Training</span><span class="pill">Leadership</span>
+          </div>
+        </article>
+        <article class="card">
+          <h3>Planting Mangrove Trees at Mwapa Creek, Kilifi County.</h3>
+          <img src="images/Environmental.jpeg" alt="image" />
+          <div class="row">
+            <span class="pill">Magrove Trees</span><span class="pill">Environmental Conservation</span><span class="pill">Coastlines</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="about" aria-labelledby="about-title">
+      <div>
+        <h2 class="section-title" id="about-title">About</h2>
+        <p>
+          Winny is a passionate climate justice activist and a fierce defender of Queer Human Rights. She is the Founding Director of ICA Foundation Kenya, a bold and visionary
+LBQ-led climate justice organization working at the intersection of climate change, gender justice, and human rights.
+With a strong background in LBQ organizing, feminist movement building, and climate policy advocacy,  Winny brings a wealth of experience and leadership to local, national, and global platforms.
+ She is a leader and mentor with the Africa Climate Reality Project, having been trained in both Cape Town, South Africa and Nairobi, Kenya.
+        </p>
+        <p>
+    In 2024, she joined other young feminists as a COP29 delegate 
+ under MADRE and the Rosa Luxemburg Stiftung (RLS), where she moderated a high-level session at the Resilience Hub in Baku, Azerbaijan, co-hosted by Americares, UN OCHA, ICCCAD, and other global partners. 
+ Winny represented YOUNGO Health Working Group at the First Africa Climate Summit that was held in Nairobi in September, 2023.
+        </p>
+
+<p>
+    Winny’s activism is rooted in her commitment to building inclusive, community-centered
+climate action that centers the leadership and lived realities of marginalized groups
+especially Lesbian, Bisexual, and Queer (LBQ) individuals who are often left out of climate
+discourse and decision-making. Through ICA Foundation Kenya, she founded the Kenya's LBQ Climate Action Taskforce, 
+a groundbreaking initiative that brings together young queer
+climate and human rights activists in Kenya to foster inclusive policy advocacy at the national level.
+</p>
+
+        </p>
+        <p class="muted">
+          Outside advocacy, Winny is a Web Developer. She leads a skills-building program for Queer youths on tech in Kenya, to create employment and co-create climate solutions using Queer-centered technology, experience and knowledge.
+        </p>
+      </div>
+      <div class="photo" aria-hidden="true">
+        <img src="images/WhatsApp Image 2025-08-13 at 1.14.24 PM.jpeg" alt="Photo" />
+      </div>
+    </section>
+
+    <!-- Experience / Skills -->
+    <section id="experience" aria-labelledby="exp-title">
+      <h2 class="section-title" id="exp-title">Experience & Skills</h2>
+      <div class="grid cols-3">
+        <article class="card">
+          <h3>Leadership</h3>
+          <p class="muted">Program strategy, grantmaking partnerships, multi-stakeholder facilitation, and team mentoring.</p>
+        </article>
+        <article class="card">
+          <h3>Advocacy</h3>
+          <p class="muted">Policy engagement (NDCs), LGBTQ+ Rights, campaign design, feminist facilitation,community safeguarding, ecological farming and environmental conservation.</p>
+        </article>
+        <article class="card">
+          <h3>Digital</h3>
+          <p class="muted">Git,HTML & CSS, Bootstrap, Algorithms, Data Structures and Procedural Programming, web content, data storytelling, M&E basics, and documentation.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" aria-labelledby="contact-title">
+      <h2 class="section-title" id="contact-title">Contact</h2>
+      <div class="card">
+        <p class="muted">Want to collaborate or say hi? Email me or use the quick form.</p>
+        <div class="row" style="margin: .5rem 0 1rem;">
+          <a class="btn primary" href="mailto:hello@hello.com">Email me</a>
+          <a class="btn" href="https://bsky.app/profile/ke-jodi.bsky.social" target="_blank" rel="noreferrer noopener">Bluesky</a>
+        </div>
+        <form action="mailto:hello@example.com" method="post" enctype="text/plain">
+          <label for="name" class="muted">Name</label><br />
+          <input id="name" name="name" type="text" required style="width:100%; padding:.75rem; border-radius:.6rem; border:1px solid color-mix(in oklab, var(--muted), transparent 65%); background:transparent; margin:.35rem 0 1rem;" />
+          <label for="message" class="muted">Message</label><br />
+          <textarea id="message" name="message" rows="4" required style="width:100%; padding:.75rem; border-radius:.6rem; border:1px solid color-mix(in oklab, var(--muted), transparent 65%); background:transparent; margin:.35rem 0 1rem;"></textarea>
+          <button class="btn primary" type="submit">Send</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <small>© <span id="year"></span> Winny Ouma. All Rights Reserved.</small>
+    </div>
+  </footer>
+
+  <script>
+    // Keep the year current without extra dependencies.
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
