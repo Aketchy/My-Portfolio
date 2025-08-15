@@ -353,14 +353,29 @@ experience and knowledge.
           <a class="btn" href="https://bsky.app/profile/ke-jodi.bsky.social" target="_blank" rel="noreferrer noopener">Bluesky</a>
           
         </div>
-        <form action="mailto:hello@example.com" method="post" enctype="text/plain">
+        <form id="contactForm" action="https://formspree.io/f/mkgzepvk" method="POST" accept-charset="UTF-8">
+          <input type="hidden" name="_subject" value="New message from WinnyOuma.com" />
+
           <label for="name" class="muted">Name</label><br />
-          <input id="name" name="name" type="text" required class="form-field" />
+          <input id="name" name="name" type="text" placeholder="Your name" required class="form-field" />
           <br />
+
+          <label for="email" class="muted">Email</label><br />
+          <input id="email" name="email" type="email" placeholder="you@example.com" required class="form-field" />
+          <br />
+
           <label for="message" class="muted">Message</label><br />
-          <textarea id="message" name="message" rows="4" required class="form-field"></textarea>
+          <textarea id="message" name="message" rows="5" placeholder="Write your message..." required class="form-field"></textarea>
           <br />
+
+          <!-- Honeypot to prevent spam -->
+          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+
+          <!-- Ask Formspree for JSON response so we can enhance later if needed -->
+          <input type="hidden" name="_format" value="plain" />
+
           <button class="btn primary" type="submit">Send</button>
+          <small class="muted" style="display:block; margin-top:.5rem;">By submitting, you agree to be contacted at the email you provide.</small>
         </form>
       </div>
     </section>
